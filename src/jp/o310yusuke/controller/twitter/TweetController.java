@@ -7,6 +7,6 @@ public class TweetController extends Controller {
 
     @Override
     public Navigation run() throws Exception {
-        return null;
+        return redirect(basePath);
     }
 }
