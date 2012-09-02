@@ -1,6 +1,7 @@
 package jp.o310yusuke.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import com.google.appengine.api.datastore.Key;
 
@@ -17,6 +18,10 @@ public class Tweet implements Serializable {
 
     @Attribute(version = true)
     private Long version;
+    
+    private String content;
+    
+    private Date createDate = new Date();
 
     /**
      * Returns the key.
@@ -54,6 +59,22 @@ public class Tweet implements Serializable {
      */
     public void setVersion(Long version) {
         this.version = version;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     @Override
