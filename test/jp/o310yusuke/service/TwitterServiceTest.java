@@ -26,7 +26,7 @@ public class TwitterServiceTest extends AppEngineTestCase {
         Map<String, Object> input = new HashMap<String, Object>();
         input.put("content", "Hello");
         Tweet tweeted = service.tweet(input);
-        assertThat(tweeted, is(nullValue()));
+        assertThat(tweeted, is(notNullValue()));
         
         TweetDao tweetDao = new TweetDao();
         Tweet stored = tweetDao.get(tweeted.getKey());
