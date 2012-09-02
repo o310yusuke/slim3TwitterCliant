@@ -1,14 +1,15 @@
 package jp.o310yusuke.service;
 
+import java.util.List;
 import java.util.Map;
+
+import jp.o310yusuke.dao.TweetDao;
+import jp.o310yusuke.model.Tweet;
 
 import org.slim3.datastore.Datastore;
 import org.slim3.util.BeanUtil;
 
 import com.google.appengine.api.datastore.Transaction;
-
-import jp.o310yusuke.dao.TweetDao;
-import jp.o310yusuke.model.Tweet;
 
 public class TwitterService {
 
@@ -21,6 +22,10 @@ public class TwitterService {
         tweetDao.put(tweet);
         tx.commit();
         return tweet;
+    }
+
+    public List<Tweet> getTweetList() {
+        return tweetDao.getTweetList();
     }
 
 }

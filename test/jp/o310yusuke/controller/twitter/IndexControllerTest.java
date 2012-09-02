@@ -14,5 +14,7 @@ public class IndexControllerTest extends ControllerTestCase {
         assertThat(controller, is(notNullValue()));
         assertThat(tester.isRedirect(), is(false));
         assertThat(tester.getDestinationPath(), is("/twitter/index.jsp"));
+        
+        assertThat(tester.requestScope("tweetList"), is(notNullValue()));
     }
 }

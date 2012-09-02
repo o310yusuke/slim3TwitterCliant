@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import jp.o310yusuke.dao.TweetDao;
@@ -15,6 +16,7 @@ import org.slim3.tester.AppEngineTestCase;
 public class TwitterServiceTest extends AppEngineTestCase {
 
     private TwitterService service = new TwitterService();
+    private TweetDao tweetDao  = new TweetDao();
 
     @Test
     public void test() throws Exception {
@@ -28,8 +30,18 @@ public class TwitterServiceTest extends AppEngineTestCase {
         Tweet tweeted = service.tweet(input);
         assertThat(tweeted, is(notNullValue()));
 
-        TweetDao tweetDao = new TweetDao();
         Tweet stored = tweetDao.get(tweeted.getKey());
         assertThat(stored.getContent(), is("Hello"));
+    }
+    
+    @Test
+    public void getTweetList() throws Exception {
+        Tweet tweet = new Tweet();
+        tweet.setContent("Hello");
+        tweetDao.put(tweet);
+        
+        List<Tweet> tweetList = service.getTweetList();
+        assertThat(tweetList.size(), is(1));
+        assertThat(tweetList.get(0).getContent(), is("Hello"));
     }
 }

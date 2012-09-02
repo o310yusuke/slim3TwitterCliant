@@ -15,5 +15,10 @@
 <textarea name="content"></textarea><br />
 <input type="submit" value="tweet" />
 </form>
+
+<c:forEach var="e" items="${tweetList}">
+${f:h(e.content)}
+<hr />
+</c:forEach>
 </body>
 </html>
