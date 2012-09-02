@@ -9,7 +9,7 @@ import org.slim3.util.RequestMap;
 public class TweetController extends Controller {
 
     private TwitterService service = new TwitterService();
-    
+
     @Override
     public Navigation run() throws Exception {
         service.tweet(new RequestMap(request));

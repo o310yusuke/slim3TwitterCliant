@@ -13,7 +13,7 @@ public class TweetControllerTest extends ControllerTestCase {
     @Test
     public void run() throws Exception {
         tester.param("content", "Hello");
-        
+
         tester.start("/twitter/tweet");
         TweetController controller = tester.getController();
         assertThat(controller, is(notNullValue()));
@@ -23,8 +23,6 @@ public class TweetControllerTest extends ControllerTestCase {
         Tweet stored = Datastore.query(Tweet.class).asSingle();
         assertThat(stored, is(notNullValue()));
         assertThat(stored.getContent(), is("Hello"));
-        
-        
-        
+
     }
 }
