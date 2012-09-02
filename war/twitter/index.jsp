@@ -7,8 +7,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>twitter Index</title>
+<link rel="stylesheet" type="text/css" href="/css/global.css" />
 </head>
 <body>
-<p>Hello twitter Index !!!</p>
+<p>What are you doing?</p>
+<form method="post" action="tweet">
+<textarea name="content"></textarea><br />
+<input type="submit" value="tweet" />
+</form>
 </body>
 </html>
