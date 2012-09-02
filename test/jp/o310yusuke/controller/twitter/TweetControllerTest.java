@@ -13,6 +13,6 @@ public class TweetControllerTest extends ControllerTestCase {
         TweetController controller = tester.getController();
         assertThat(controller, is(notNullValue()));
         assertThat(tester.isRedirect(), is(false));
-        assertThat(tester.getDestinationPath(), is("/twitter/tweet.jsp"));
+        assertThat(tester.getDestinationPath(), is(nullValue()));
     }
 }
