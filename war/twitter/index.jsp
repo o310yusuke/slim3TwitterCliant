@@ -10,7 +10,15 @@
 <link rel="stylesheet" type="text/css" href="/css/global.css" />
 </head>
 <body>
+
 <p>What are you doing?</p>
+
+<ul style="color : #ff0000;">
+<c:forEach var="err" items="${f:errors()}">
+<li>${f:h(err)}</li>
+</c:forEach>
+</ul>
+
 <form method="post" action="tweet">
 <textarea name="content"></textarea><br />
 <input type="submit" value="tweet" />

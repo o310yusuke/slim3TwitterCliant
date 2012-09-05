@@ -17,7 +17,7 @@ public class TweetControllerTest extends ControllerTestCase {
         tester.start("/twitter/tweet");
         TweetController controller = tester.getController();
         assertThat(controller, is(notNullValue()));
-        assertThat(tester.isRedirect(), is(true));
+        assertThat(tester.isRedirect(), is(false));
         assertThat(tester.getDestinationPath(), is("/twitter/"));
 
         Tweet stored = Datastore.query(Tweet.class).asSingle();

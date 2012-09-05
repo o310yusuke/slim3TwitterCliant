@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jp.o310yusuke.bean.TweetBean;
 import jp.o310yusuke.dao.TweetDao;
 import jp.o310yusuke.model.Tweet;
 
@@ -27,10 +28,10 @@ public class TwitterServiceTest extends AppEngineTestCase {
     public void tweet() throws Exception {
         Map<String, Object> input = new HashMap<String, Object>();
         input.put("content", "Hello");
-        Tweet tweeted = service.tweet(input);
+        TweetBean tweeted = service.tweet(input);
         assertThat(tweeted, is(notNullValue()));
 
-        Tweet stored = tweetDao.get(tweeted.getKey());
+        Tweet stored = tweetDao.get(tweetDao.createKeyById(tweeted.getId()));
         assertThat(stored.getContent(), is("Hello"));
     }
     
@@ -40,7 +41,7 @@ public class TwitterServiceTest extends AppEngineTestCase {
         tweet.setContent("Hello");
         tweetDao.put(tweet);
         
-        List<Tweet> tweetList = service.getTweetList();
+        List<TweetBean> tweetList = service.getTweetList();
         assertThat(tweetList.size(), is(1));
         assertThat(tweetList.get(0).getContent(), is("Hello"));
     }

@@ -3,29 +3,25 @@ package jp.o310yusuke.service;
 import java.util.List;
 import java.util.Map;
 
-import jp.o310yusuke.dao.TweetDao;
-import jp.o310yusuke.model.Tweet;
+import jp.o310yusuke.bean.TweetBean;
+import jp.o310yusuke.dto.TweetDto;
 
-import org.slim3.datastore.Datastore;
 import org.slim3.util.BeanUtil;
-
-import com.google.appengine.api.datastore.Transaction;
 
 public class TwitterService {
 
-    private TweetDao tweetDao = new TweetDao();
+    private TweetDto tweetDto = new TweetDto();
 
-    public Tweet tweet(Map<String, Object> input) {
-        Tweet tweet = new Tweet();
-        BeanUtil.copy(input, tweet);
-        Transaction tx = Datastore.beginTransaction();
-        tweetDao.put(tweet);
-        tx.commit();
-        return tweet;
+    public TweetBean tweet(Map<String, Object> input) {
+        TweetBean tweetBean = new TweetBean();
+        BeanUtil.copy(input, tweetBean);
+        tweetBean = tweetDto.put(tweetBean);
+        
+        return tweetBean;
     }
 
-    public List<Tweet> getTweetList() {
-        return tweetDao.getTweetList();
+    public List<TweetBean> getTweetList() {
+        return tweetDto.getTweetList();
     }
 
 }
